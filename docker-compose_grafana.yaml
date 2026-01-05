@@ -1,0 +1,24 @@
+services:
+  # Grafana - La plataforma de visualització
+  grafana:
+    image: grafana/grafana:12.0.1
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - /opt/docker/grafana/data:/var/lib/grafana
+    environment:
+      # Configuració opcional: pots canviar el password de l'admin inicial
+      - GF_SECURITY_ADMIN_USER=david
+      - GF_SECURITY_ADMIN_PASSWORD=1357924680
+      # Si no els configures, l'usuari/password per defecte serà admin/admin
+      - GF_PLUGINS_PREINSTALL=grafana-clock-panel, grafana-mqtt-datasource
+    restart: unless-stopped
+    networks:
+      - xarxa # Connecta InfluxDB a la xarxa definida com a 'internal'
+
+networks:
+  xarxa:
+    name: xarxa_IOT # Aquest és el nom real de la xarxa que ja heu creat (amb `docker network create -d bridge xarxa_docker1`)
+    external: true # Indica a Docker Compose que aquesta xarxa ja existeix i no ha de ser gestionada per ell
+

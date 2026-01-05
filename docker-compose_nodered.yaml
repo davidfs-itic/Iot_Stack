@@ -1,0 +1,18 @@
+services:
+  node-red:
+    image: nodered/node-red:4.1.0-18
+    container_name: node1
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Madrid
+    ports:
+      - "1880:1880"
+    volumes:
+      - /opt/docker/node-red/data:/data
+    networks:
+      - xarxa_IOT
+
+networks:
+  xarxa_IOT:
+    name: xarxa_IOT
+    external: true

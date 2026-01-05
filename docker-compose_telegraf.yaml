@@ -1,0 +1,17 @@
+services:
+  telegraf:
+      image: telegraf
+      container_name: telegraf
+      volumes:
+      - /opt/docker/telegraf/conf/:/etc/telegraf/
+      - /var/run/docker.sock:/var/run/docker.sock
+      ports:
+      - '8125:8125'
+      restart: unless-stopped
+      networks:
+        - xarxa # Connecta InfluxDB a la xarxa IOT
+
+networks:
+  xarxa:
+    name: xarxa_IOT # Aquest és el nom real de la xarxa que ja heu creat (amb `docker network create -d bridge xarxa_docker1`)
+    external: true # Indica a Docker Compose que aquesta xarxa ja existeix i no ha de ser gestionada per ell

@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  influxdb3:
+    image: influxdb:3-core
+    container_name: influxdb3
+    ports:
+      - 8181:8181
+    command:
+      - influxdb3
+      - serve
+      - --node-id=node0
+      - --object-store=file
+      - --data-dir=/var/lib/influxdb3/data
+      - --plugin-dir=/var/lib/influxdb3/plugins
+    volumes:
+      - /opt/docker/influxdb3/data:/var/lib/influxdb3/data
+      - /opt/docker/influxdb3/plugins:/var/lib/influxdb3/plugins    
+    restart: unless-stopped
+    networks:
+      - xarxa
+ #   healthcheck:  # ← Afegit per monitorització
+ #     test: ["CMD", "curl", "-f", "http://localhost:8181/health"]
+ #     interval: 30s
+ #     timeout: 10s
+ #     retries: 3
+
+  influxdb3ui:
+    image: influxdata/influxdb3-ui:1.4.0
+    container_name: influxdb3ui
+    pull_policy: always
+    command: ["--mode=admin"]
+    ports:
+      - "8888:443"
+    volumes:
+      - /opt/docker/influxdb3/ui/db:/db:rw
+      - /opt/docker/influxdb3/ui/config:/app-root/config:ro
+      #- /opt/docker/influxdb3/ui/ssl:/etc/nginx/ssl:ro
+    environment:
+      SESSION_SECRET_KEY: ${SESSION_SECRET_KEY}
+    restart: unless-stopped
+#    depends_on:
+#      influxdb3:
+#        condition: service_healthy  
+    networks:
+      - xarxa 
+
+networks:
+  xarxa:
+    name: xarxa_IOT 
+    external: true 

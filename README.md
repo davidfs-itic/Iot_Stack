@@ -70,8 +70,11 @@ sudo mkdir -p /opt/docker/influxdb3/data
 sudo mkdir -p /opt/docker/influxdb3/plugins
 
 python3 -m venv /opt/docker/influxdb3/plugins/.venv
+```
 
 # Directoris per a la UI (en la ruta actual del docker-compose.yml)
+
+```
 mkdir -p /opt/docker/influxdb3/ui/db
 mkdir -p /opt/docker/influxdb3/ui/config
 mkdir -p /opt/docker/influxdb3/ui/ssl

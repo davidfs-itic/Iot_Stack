@@ -5,6 +5,7 @@ https://analisi.transparenciacatalunya.cat/resource/nzvn-apee.json
 
 Filtres
 
+Exemple:
 https://analisi.transparenciacatalunya.cat/resource/nzvn-apee.json?$where=data_lectura%3E=%272025-11-16T15:24%27
 
 

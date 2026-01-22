@@ -165,3 +165,6 @@ editar l'arxiu data/settings.js
     },
 ```
 
+### Docker-compose:
+
+[Docker-Compose de nodered](./docker-compose_nodered.yaml)

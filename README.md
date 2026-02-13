@@ -94,10 +94,10 @@ sudo chmod -R 755 /opt/docker/influxdb3/
 ## Influx db3-UI
 ### Generate session secret
 ```bash
-echo "SESSION_SECRET_KEY=$(openssl rand -base64 32)" > /opt/docker/influxdb3/.env
+echo "SESSION_SECRET_KEY=$(openssl rand -base64 32)" | sudo tee /opt/docker/influxdb3/.env
 ```
 
-### Api tokcen per a influxdb
+### Api token per a influxdb
 
 Un cop s'hagi aixecat influxdb3 caldrà generar un token:
 

@@ -118,7 +118,7 @@ La versió core (no enterpise) només suporta admin tokens.
 
 ### Create configuration
 ```bash
-cat > /opt/docker/influxdb3/ui/config/config.json << 'EOF'
+sudo tee /opt/docker/influxdb3/ui/config/config.json > /dev/null << 'EOF'
 {
   "DEFAULT_INFLUX_SERVER": "http://influxdb3:8181",
   "DEFAULT_INFLUX_DATABASE": "",

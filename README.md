@@ -35,7 +35,7 @@ protocol websockets
 Executar mosquitto_password -c fitxer usuari per crear un arxiu de passwords amb un usuari. Sense opció, per afegir usuaris a un arxiu creat
 
 ```bash
-docker exec -it mqtt /usr/bin/mosquitto_password -c /mosquitto/config/pwd_usuaris IOT
+docker exec -it mqtt /usr/bin/mosquitto_passwd -c /mosquitto/config/pwd_usuaris IOT
 ```
 
 
@@ -75,7 +75,7 @@ Directoris:
 sudo mkdir -p /opt/docker/influxdb3/data
 sudo mkdir -p /opt/docker/influxdb3/plugins
 
-python3 -m venv /opt/docker/influxdb3/plugins/.venv
+sudo python3 -m venv /opt/docker/influxdb3/plugins/.venv
 ```
 
 # Directoris per a la UI (en la ruta actual del docker-compose.yml)

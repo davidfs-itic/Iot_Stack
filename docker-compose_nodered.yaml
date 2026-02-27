@@ -1,6 +1,6 @@
 services:
   node-red:
-    image: nodered/node-red:4.1.0-18
+    image: nodered/node-red:4.1.6-22
     container_name: node1
     restart: unless-stopped
     environment:
